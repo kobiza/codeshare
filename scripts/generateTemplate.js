@@ -23,7 +23,6 @@ const createDirectoryFromTemplate = (templatePath, destPath, fixer) => {
         const newFileName = fixer(file)
         const origFilePath = path.resolve(templatePath, file)
         const destFilePath = path.resolve(destPath, newFileName)
-        console.log('from -> to', origFilePath, destFilePath)
 
         const stats = fs.statSync(origFilePath)
         if (stats.isFile()) {

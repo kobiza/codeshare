@@ -26,7 +26,6 @@ const createDirectoryFromTemplate = (templatePath, destPath) => {
     filesToCreate.forEach((file) => {
         const origFilePath = path.resolve(templatePath, file)
         const destFilePath = path.resolve(destPath, file)
-        console.log('from -> to', origFilePath, destFilePath)
 
         const stats = fs.statSync(origFilePath)
         if (stats.isFile()) {
@@ -46,7 +45,6 @@ const createDirectoryFromTemplate = (templatePath, destPath) => {
 
 inquirer.prompt(questions).then(async ({ problemName, userName }) => {
     const userFolderName = userName.toLowerCase()
-    console.log('problemName, userFolderName', problemName, userFolderName)
 
     const templatePath = path.resolve(problemsRootPath, problemName)
     const userDirPath = path.resolve(targetRootPath, userName)
