@@ -4,29 +4,29 @@
  */
 var canJump = function(nums) {
     const falsyIndexes = {}
-    const canJumpRec = (_nums) => {
-        if (falsyIndexes[_nums.length]) {
+    const canJumpRec = (index) => {
+        if (falsyIndexes[index]) {
             return false
         }
-        if (_nums[0] >= _nums.length - 1) {
+        if (index + nums[index] >= nums.length - 1) {
             return true
         }
 
-        if (_nums.length <= 1) {
-            falsyIndexes[_nums.length] = true
+        if (index === nums.length - 1) {
+            falsyIndexes[index] = true
             return false
         }
 
-        for (let i = _nums[0]; i > 0; i--) {
-            if (canJumpRec(_nums.slice(i))) {
+        for (let i = nums[index]; i > 0; i--) {
+            if (canJumpRec(index + i)) {
                 return true
             }
         }
-        falsyIndexes[_nums.length] = true
+        falsyIndexes[index] = true
         return false
     }
 
-    return canJumpRec(nums)
+    return canJumpRec(0)
 };
 
 module.exports = canJump;
