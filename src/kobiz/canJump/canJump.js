@@ -3,30 +3,27 @@
  * @return {boolean}
  */
 var canJump = function(nums) {
-    const falsyIndexes = {}
-    const canJumpRec = (index) => {
-        if (falsyIndexes[index]) {
-            return false
-        }
-        if (index + nums[index] >= nums.length - 1) {
+    const canJumpRec = (targetIndex) => {
+        if (targetIndex === 0) {
             return true
         }
 
-        if (index === nums.length - 1) {
-            falsyIndexes[index] = true
+        const stack = []
+
+        for (let i = targetIndex - 1; i >= 0; i--) {
+            if (i + nums[i] >= targetIndex) {
+                stack.push(i)
+            }
+        }
+
+        if (stack.length === 0) {
             return false
         }
 
-        for (let i = nums[index]; i > 0; i--) {
-            if (canJumpRec(index + i)) {
-                return true
-            }
-        }
-        falsyIndexes[index] = true
-        return false
+        return canJumpRec(stack.pop())
     }
 
-    return canJumpRec(0)
+    return canJumpRec(nums.length - 1)
 };
 
 module.exports = canJump;

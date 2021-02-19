@@ -3,6 +3,14 @@ const canJump = require('./canJump')
 describe('canJump', () => {
     const testCases = [
         {
+            input: [1],
+            expectedOutput: true
+        },
+        {
+            input: [0],
+            expectedOutput: true
+        },
+        {
             input: [1,0,4],
             expectedOutput: false
         },
