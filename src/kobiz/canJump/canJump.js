@@ -3,27 +3,14 @@
  * @return {boolean}
  */
 var canJump = function(nums) {
-    const canJumpRec = (targetIndex) => {
-        if (targetIndex === 0) {
-            return true
+    let lastPos = nums.length - 1
+    for (let i = nums.length - 1; i >= 0; i--) {
+        if (i + nums[i] >= lastPos) {
+            lastPos = i
         }
-
-        const stack = []
-
-        for (let i = targetIndex - 1; i >= 0; i--) {
-            if (i + nums[i] >= targetIndex) {
-                stack.push(i)
-            }
-        }
-
-        if (stack.length === 0) {
-            return false
-        }
-
-        return canJumpRec(stack.pop())
     }
 
-    return canJumpRec(nums.length - 1)
+    return lastPos === 0
 };
 
 module.exports = canJump;
