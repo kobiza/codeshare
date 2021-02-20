@@ -30,6 +30,10 @@ describe('fib', () => {
             input: 6,
             expectedOutput: 8
         },
+        {
+            input: 80,
+            expectedOutput: 23416728348467684
+        },
     ]
 
     testCases.forEach(({ input, expectedOutput }) => {
