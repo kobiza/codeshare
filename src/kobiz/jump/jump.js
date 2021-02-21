@@ -3,28 +3,29 @@
  * @return {number}
  */
 var jump = function(nums) {
-    const getMinJumps = (targetIndex, jumps) => {
-        if (targetIndex === 0) {
-            return jumps
-        }
+    if (nums.length === 1) {
+        return 0
+    }
 
-        const stack = []
+    let jumpCounter = 0
+    let index = 0
 
-        for (let i = targetIndex - 1; i >= 0; i--) {
-            if (i + nums[i] >= targetIndex) {
-                stack.push({index: i, jumps: jumps + 1})
+    while (index + nums[index] < nums.length -1) {
+        let nextIndex = index + nums[index]
+        let maxJumpFromIndex = nextIndex + nums[nextIndex]
+        for (let i = nextIndex - 1; i > index; i--) {
+            const jumpFromIndex = i + nums[i]
+            if (jumpFromIndex > maxJumpFromIndex) {
+                nextIndex = i
+                maxJumpFromIndex = jumpFromIndex
             }
         }
 
-        if (stack.length === 0) {
-            return false
-        }
-
-        const next = stack.pop()
-        return getMinJumps(next.index, next.jumps)
+        index = nextIndex
+        jumpCounter++
     }
 
-    return getMinJumps(nums.length - 1, 0)
+    return jumpCounter + 1
 };
 
 module.exports = jump;

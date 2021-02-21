@@ -3,7 +3,19 @@ const jump = require('./jump')
 describe('jump', () => {
     const testCases = [
         {
-            input: [2,3,1,1,4],
+            input: [0],
+            expectedOutput: 0
+        },
+        {
+            input: [1],
+            expectedOutput: 0
+        },
+        {
+            input: [1,2],
+            expectedOutput: 1
+        },
+        {
+            input: [2,3,1,6,4],
             expectedOutput: 2
         },
         {
@@ -12,7 +24,7 @@ describe('jump', () => {
         },
         {
             input: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,6,1,6,1,1,1,5],
-            expectedOutput: 2
+            expectedOutput: 17
         },
     ]
 
