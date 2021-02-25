@@ -13,10 +13,9 @@ const kFromN = (k, n) => factorial(n) / (factorial(k) * factorial(n - k))
  * @return {number}
  */
 var climbStairs = function(n) {
-    const numberOfSeries = Math.floor(n / 2) + 1
     let result = 1
-    for (let twoReturns = 1; twoReturns < numberOfSeries; twoReturns++) {
-        const oneReturns = n - twoReturns * 2
+    for (let oneReturns = n - 2; oneReturns >= 0; oneReturns-=2) {
+        const twoReturns = (n - oneReturns) / 2
         const size = oneReturns + twoReturns
 
         result += kFromN(twoReturns, size)
