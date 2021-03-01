@@ -3,15 +3,20 @@
  * @return {number}
  */
 var climbStairs2 = function(n) {
-    if (n === 1) {
-        return 1
+    const cache = {
+        1: 1,
+        2: 2
+    }
+    const climbStairsRec = (currN) => {
+        if (cache[currN]) {
+            return cache[currN]
+        }
+
+        cache[currN] = climbStairsRec(currN - 1) + climbStairsRec(currN - 2)
+        return cache[currN]
     }
 
-    if (n === 2) {
-        return 2
-    }
-
-    return climbStairs2(n - 1) + climbStairs2(n - 2)
+    return climbStairsRec(n)
 };
 
 module.exports = climbStairs2;
