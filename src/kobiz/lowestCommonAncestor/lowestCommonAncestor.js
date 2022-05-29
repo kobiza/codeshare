@@ -65,6 +65,8 @@ const findPath = (currNode, targetNodeKey, path = []) => {
 }
 
 
+// add second commit
+
 const findLowestCommonAncestor = (tree, node1Key, node2Key) => {
     const findPath = (currNode, nodeKey) => {
         if (currNode.id === nodeKey) {
